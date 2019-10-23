@@ -1,0 +1,70 @@
+.App {
+  /*text-align: center;*/
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+.appWrapper {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+
+  grid-template-areas: "h h" "n m";
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
+}
+
+.appHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-area: h;
+  padding: 15px;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(255, 114, 0, 0.6);
+}
+.appHeader img {
+  width: 80px;
+  height: auto;
+}
+.sidebar {
+  grid-area: n;
+  padding: 15px;
+  background-color: rgba(255, 114, 0, 0.6);
+  list-style: none;
+}
+.sidebar ul{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.mainContent {
+  grid-area: m;
+  background-color: rgba(255, 114, 0, 0.6);
+}
+.userInfo img{
+  width: auto;
+}
