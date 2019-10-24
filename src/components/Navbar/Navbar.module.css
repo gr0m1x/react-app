@@ -1,0 +1,20 @@
+.sidebar {
+    grid-area: n;
+    padding: 15px;
+    background-color: rgba(255, 114, 0, 0.6);
+    list-style: none;
+}
+.navList{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.item a {
+ text-decoration: none;
+    color: #fff;
+}
+.item a:hover,
+.item.active a{
+    color: #666;
+}

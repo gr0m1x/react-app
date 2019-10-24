@@ -1,0 +1,13 @@
+.appHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-area: h;
+    padding: 15px;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(255, 114, 0, 0.6);
+}
+.appHeader img {
+    width: 80px;
+    height: auto;
+}
