@@ -9,11 +9,11 @@ const MyPosts = () => {
             My posts
             <AddPost/>
             <div className={styles.postsList}>
-                <Post/>
-                <Post/>
-                <Post/>
-                <Post/>
-                <Post/>
+                <Post message="first props" likeCount="10"/>
+                <Post message="First message" likeCount="13"/>
+                {/*<Post/>*/}
+                {/*<Post/>*/}
+                {/*<Post/>*/}
             </div>
         </div>
     );

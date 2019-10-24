@@ -13,3 +13,9 @@
 
     border-radius: 50%;
 }
+
+.likeCount {
+    align-self: flex-end;
+    margin-left: auto;
+    color: green;
+}
