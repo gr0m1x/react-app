@@ -11,10 +11,9 @@
 }
 
 .item a {
- text-decoration: none;
     color: #fff;
 }
 .item a:hover,
-.item.active a{
+.item a.active{
     color: #666;
 }

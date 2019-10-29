@@ -3,12 +3,12 @@ import styles from './AddPost.module.css'
 
 const AddPost = () => {
     return (
-            <div className={styles.addPost}>
-                <form action="">
-                    <textarea></textarea>
-                    <button>Send</button>
-                </form>
-            </div>
+        <div className={styles.addPost}>
+            <form action="">
+                <textarea></textarea>
+                <button>Send</button>
+            </form>
+        </div>
     );
 }
 

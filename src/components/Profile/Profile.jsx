@@ -1,17 +1,12 @@
 import React from 'react';
 import styles from './Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = () => {
     return (
-        <div className={styles.mainContent}>
-            <div>
-                <img src="https://picsum.photos/id/506/1800/500" alt=""/>
-            </div>
-            <div className={styles.userInfo}>
-                <img src="https://picsum.photos/id/447/100/100" alt=""/>
-                <div>Description</div>
-            </div>
+        <div>
+            <ProfileInfo/>
             <MyPosts/>
         </div>
     );
