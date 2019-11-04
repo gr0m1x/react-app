@@ -3,15 +3,16 @@ import styles from './MyPosts.module.css';
 import Post from "./Post/Post";
 import AddPost from "./AddPost/AddPost";
 
-const MyPosts = () => {
+const MyPosts = (props) => {
+
+    let postsElemetns = props.posts.map( p => <Post message={p.postText} likeCount={p.likesCount}/>);
+
     return (
         <div className={styles.posts}>
             <h3>My posts</h3>
             <AddPost/>
             <div className={styles.postsList}>
-                <Post message="first props" likeCount="10"/>
-                <Post message="First message" likeCount="13"/>
-                <Post message="Hello" likeCount="2"/>
+                {postsElemetns}
             </div>
         </div>
     );
