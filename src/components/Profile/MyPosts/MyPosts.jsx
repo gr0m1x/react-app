@@ -10,7 +10,11 @@ const MyPosts = (props) => {
     return (
         <div className={styles.posts}>
             <h3>My posts</h3>
-            <AddPost addPost={props.addPost}/>
+            <AddPost
+                addPost={props.addPost}
+                updateNewPostText={props.updateNewPostText}
+                newPostText={props.newPostText}
+               />
             <div className={styles.postsList}>
                 {postsElemetns}
             </div>

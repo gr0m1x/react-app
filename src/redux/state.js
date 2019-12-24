@@ -1,5 +1,6 @@
-import {rerenderEntireTree} from "../render";
-
+let rerenderEntireTree = () => {
+    console.log("State changed")
+}
 let state = {
     profilePage : {
         posts: [
@@ -8,6 +9,7 @@ let state = {
             {id: 3, postText: "Hello", likesCount: 2},
             {id: 2, postText: "Second message", likesCount: 0},
         ],
+        newPostText: '',
     },
 
     dialogsPage : {
@@ -17,32 +19,43 @@ let state = {
             {id: 3, name: "Gena"},
             {id: 4, name: "Nikitos"},
             {id: 5, name: "Yrko"},
-            {id: 6, name: "Marina"},
-            {id: 7, name: "Iriska"},
         ],
         messages: [
             {id: 1, message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."},
             {id: 2, message: "Esse laborum laudantium maxime quos vel."},
             {
                 id: 3,
-                message: "Accusantium, assumenda cupiditate dolores exercitationem mollitia necessitatibus nobis perferendis quaerat quis reprehenderit rerum, sint vitae voluptatum. "
+                 message: "Accusantium, assumenda cupiditate dolores exercitationem mollitia necessitatibus nobis perferendis quaerat quis reprehenderit rerum, sint vitae voluptatum. "
             },
             {id: 4, message: "Esse laborum laudantium maxime quos vel."},
             {id: 5, message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."},
         ],
-    }
+    },
 
 };
 
-export let addPost = (postMessage) => {
+export const addPost = () => {
     let newPost = {
         id: 5,
-        postText: postMessage,
+        postText: state.profilePage.newPostText,
         likesCount: 0,
     };
-    state.profilePage.posts.push(newPost);
 
+    state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = "";
     rerenderEntireTree(state);
 }
 
+export const updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
+    rerenderEntireTree(state);
+};
+
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer;
+};
+
 export default state;
+
+
+// 37 les
