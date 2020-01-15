@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './AddPost.module.css'
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../redux/state";
+import {addPostCreator, updateNewPostTextCreator} from "../../../../redux/state";
 
 
 const AddPost = (props) => {
@@ -8,12 +8,12 @@ const AddPost = (props) => {
     let newPostElement = React.createRef();
 
     let addPost = () => {
-        props.dispatch(addPostActionCreator());
+        props.dispatch(addPostCreator());
     };
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.dispatch( updateNewPostTextActionCreator(text) );
+        props.dispatch( updateNewPostTextCreator(text) );
     };
 
     return (
