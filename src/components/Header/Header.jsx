@@ -1,10 +1,10 @@
 import React from 'react';
-import style from "./Header.module.css";
+import style from "./_header.scss";
 
 
 const Header = () => {
     return (
-        <header className={style.appHeader}>
+        <header className="appHeader">
             <img
                 src="https://www.designfreelogoonline.com/wp-content/uploads/2016/03/00106-3D-company-logo-design-free-logo-online-Template-03.png"
                 alt="site logo"/>
