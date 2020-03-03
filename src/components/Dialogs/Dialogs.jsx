@@ -1,49 +1,44 @@
 import React from "react";
-import styles from "./Dialogs.module.css";
+import "./Dialogs.css";
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
-import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/dialogs-reducer";
 
 
 const Dialogs = (props) => {
 
-    let state = props.store.getState().dialogsPage;
+    let state = props.dialogsPage
 
     let dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
     let messagesElements = state.messages.map(m => <Message textMessage={m.message} id={m.id}/>);
     let newMessageBody = state.newMessageBody;
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator())
+        props.sendMessage()
     };
 
     let  onNewMessageChange = (e) => {
         let body = e.target.value;
-        props.store.dispatch(updateNewMessageBodyCreator(body))
-
+        props.updateNewMessageBody(body)
     };
 
     return (
-        <div className={styles.dialogs}>
-            <div className={styles.dialogsItems}>
+        <div className="dialogs">
+            <div className="dialogsItems">
                 {dialogsElements}
             </div>
 
-            <div className={styles.messages}>
+            <div className="messages">
                 <div>
                     {messagesElements}
                 </div>
-                <div>
-                    <div className={styles.sendMessage}>
-                        <div>
-                            <textarea onChange={onNewMessageChange}
-                                      value={newMessageBody} rows="8" placeholder="Enter your message">
-
-                            </textarea>
-                        </div>
-                        <div>
-                            <button onClick={onSendMessageClick}>Send message</button>
-                        </div>
+                <div className="sendMessage">
+                    <div>
+                        <textarea onChange={onNewMessageChange}
+                              value={newMessageBody} rows="8" placeholder="Enter your message">
+                        </textarea>
+                    </div>
+                    <div>
+                        <button onClick={onSendMessageClick}>Send message</button>
                     </div>
                 </div>
             </div>

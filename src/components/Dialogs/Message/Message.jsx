@@ -1,13 +1,13 @@
 import React from "react";
-import styles from "./../Dialogs.module.css";
+import "../Dialogs.css";
 
 const Message = (props) => {
     return (
-        <div className={styles.message}>
-            <span className={styles.userAva}>
+        <div className="message">
+            <span className="userAva">
                 <img src="https://picsum.photos/id/536/200/200" alt=""/>
             </span>
-            <span className={styles.messageItem}>
+            <span className="messageItem">
                 {props.textMessage}
             </span>
         </div>
