@@ -1,12 +1,10 @@
 import React from 'react';
 import "./Navbar.css";
 import {NavLink} from "react-router-dom";
+import {connect} from "react-redux";
 
 const Navbar = (props) => {
-    let state = props.store.getState().navbar
-
-    console.log(state)
-    let navbarItem = state.navList.map(l => {
+    let navbarItem = props.navList.map(l => {
         return (
             <li className="navList_item">
                 <NavLink to={l.rout} activeClassName="active">{l.name}</NavLink>
@@ -22,4 +20,12 @@ const Navbar = (props) => {
     );
 }
 
-export default Navbar;
+let mapStateToProps = (state) => {
+    return{
+        navList: state.navbar.navList,
+    }
+};
+
+const NavbarContainer = connect(mapStateToProps)(Navbar);
+
+export default NavbarContainer;
