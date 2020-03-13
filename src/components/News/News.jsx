@@ -5,6 +5,11 @@ const News = () => {
     return (
         <div>
             News
+
+
+            <div className="box">
+
+            </div>
         </div>
     );
 }
