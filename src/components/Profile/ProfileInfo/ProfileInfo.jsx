@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from './ProfileInfo.module.css'
+import './ProfileInfo.css'
 
 
 const ProfileInfo = () => {
     return (
         <div>
             <div>
-                <img src="https://picsum.photos/id/506/1800/500" alt=""/>
+                <img src="https://picsum.photos/id/507/1700/400" alt=""/>
             </div>
-            <div className={styles.userInfo}>
+            <div className="userInfo">
                 <img src="https://picsum.photos/id/447/100/100" alt=""/>
                 <div>Description</div>
             </div>

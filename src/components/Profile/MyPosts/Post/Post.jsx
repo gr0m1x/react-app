@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from './Post.module.css'
+import './Post.css'
 
 const Post = (props) => {
     return (
-        <div className={styles.item}>
-            <img className={styles.userAva} src="https://picsum.photos/id/509/200/200" alt="user photo"/>
+        <div className="item">
+            <img className="userAva" src="https://picsum.photos/id/509/200/200" alt="user photo"/>
             <p>
                 {props.message}
             </p>
-            <span className={styles.likeCount}>
+            <span className="likeCount">
                Likes {props.likeCount}
             </span>
         </div>

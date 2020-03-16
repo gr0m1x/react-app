@@ -3,6 +3,7 @@ let initialState = {
         {rout:"/profile", name:"Profile"},
         {rout:"/dialogs", name:"Messages"},
         {rout:"/news", name:"News"},
+        {rout:"/users", name:"Users"},
         {rout:"/music", name:"Music"},
         {rout:"/settings", name:"Settings"},
     ]
