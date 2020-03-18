@@ -10,10 +10,13 @@
     border-radius: 50%;
     overflow: hidden;
 }
+.user-control {
+    width: 10%;
+}
 .user-info {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 70%;
     margin-left: 20px;
     padding: 10px 15px;
 
