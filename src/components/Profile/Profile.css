@@ -1,0 +1,20 @@
+.userInfo {
+    padding-top: 20px;
+}
+
+.userContact {
+    display: flex;
+    align-items: flex-start;
+}
+
+.userContact-list {
+    padding: 0;
+    padding-left: 20px;
+    margin: 0;
+    list-style: none;
+}
+
+.userLogo {
+    width: 100px;
+    height: 100px;
+}

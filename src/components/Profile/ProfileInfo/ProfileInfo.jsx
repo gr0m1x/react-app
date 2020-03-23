@@ -10,12 +10,29 @@ const ProfileInfo = (props) => {
 
     return (
         <div>
-            <div>
+            <div >
                 <img src="https://picsum.photos/id/507/1700/400" alt=""/>
             </div>
+
             <div className="userInfo">
-                <img src={props.profile.photos.small} alt=""/>
-                <div>Description</div>
+                <div className="userContact">
+                    <div>
+                        <img className="userLogo" src={props.profile.photos.small} alt=""/>
+                        <p>Name: {props.profile.fullName}</p>
+                        <p>{props.profile.aboutMe}</p>
+                    </div>
+                    <ul className="userContact-list">
+                        <li>{props.profile.contacts.facebook}</li>
+                        <li>{props.profile.contacts.vk}</li>
+                        <li>{props.profile.contacts.twitter}</li>
+                        <li>{props.profile.contacts.instagram}</li>
+                        <li>{props.profile.contacts.github}</li>
+                    </ul>
+                </div>
+
+                <div className="userDescription">
+                    {props.profile.lookingForAJob && <p>{props.profile.lookingForAJobDescription}</p>}
+                </div>
             </div>
         </div>
 
