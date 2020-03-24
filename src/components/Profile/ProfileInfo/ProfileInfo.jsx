@@ -17,10 +17,11 @@ const ProfileInfo = (props) => {
             <div className="userInfo">
                 <div className="userContact">
                     <div>
-                        <img className="userLogo" src={props.profile.photos.small} alt=""/>
+                        <img className="userLogo" src={props.profile.photos.small ? props.profile.photos.small : 'https://picsum.photos/id/509/200/200'} alt=""/>
                         <p>Name: {props.profile.fullName}</p>
                         <p>{props.profile.aboutMe}</p>
                     </div>
+                    <img src="" alt=""/>
                     <ul className="userContact-list">
                         <li>{props.profile.contacts.facebook}</li>
                         <li>{props.profile.contacts.vk}</li>
