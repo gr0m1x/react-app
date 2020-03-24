@@ -1,6 +1,7 @@
 import React from "react";
 import "./Users.css";
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
 
 const Users = (props) => {
 
@@ -17,7 +18,7 @@ const Users = (props) => {
             <div className="pagination">
                 {/*{console.log(pages)}*/}
                 {pages.map( p => {
-                    return <span className={props.currentPage === p && "selectedPage"}
+                    return <span className={props.currentPage === p ? "selectedPage" : ""}
                                  onClick={ () => { props.onPageChanged(p) }}> {p} </span>
                 })}
             </div>
@@ -32,8 +33,34 @@ const Users = (props) => {
                         </div>
                         <div>
                             { u.followed
-                                ? <button onClick={ () => {props.unfollow(u.id)} }>Unfollow</button>
-                                : <button onClick={ () => {props.follow(u.id)} }>Follow</button>
+                                ? <button onClick={ () => {
+
+                                    // axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                    //     withCredentials: true,  // в delete запросе 2-м параметром  withCredentials - проверка авторизации
+                                    //     headers: {
+                                    //         "API-KEY" : "b1775b2f-c3a5-4509-8dc9-90b5629de7c3"
+                                    //     }
+                                    // }).then(response => {
+                                    //     if (response.data.resultCode === 0) { // сервер подтвердил что подписка произошла resultCode == 0
+                                    //
+                                    //     }
+                                    // });
+                                    props.unfollow(u.id) // вызываем callback unfollow
+                                }}>Unfollow</button>
+                                : <button onClick={ () => {
+
+                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {} , {
+                                        withCredentials: true, // в post запросе 3-м параметром  withCredentials - проверка авторизации
+                                        headers: {
+                                            "API-KEY" : "b1775b2f-c3a5-4509-8dc9-90b5629de7c3"
+                                        }
+                                    }).then(response => {
+                                            if (response.data.resultCode === 0) { // сервер подтвердил что подписка произошла resultCode == 0
+
+                                            }
+                                    });
+                                    props.follow(u.id) // вызываем callback follow
+                                }}>Follow</button>
                             }
                         </div>
                     </span>
