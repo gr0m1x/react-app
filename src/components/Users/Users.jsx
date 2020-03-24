@@ -2,6 +2,7 @@ import React from "react";
 import "./Users.css";
 import {NavLink} from "react-router-dom";
 import * as axios from "axios";
+import {followUsers, unfollowUsers} from "../../api/api";
 
 const Users = (props) => {
 
@@ -35,13 +36,8 @@ const Users = (props) => {
                             { u.followed
                                 ? <button onClick={ () => {
 
-                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                        withCredentials: true,  // в delete запросе 2-м параметром  withCredentials - проверка авторизации
-                                        headers: {
-                                            "API-KEY" : "5351a01e-a2b9-49ab-accf-57bf7595a3cd"
-                                        }
-                                    }).then(response => {
-                                        if (response.data.resultCode === 0) { // сервер подтвердил что подписка произошла resultCode == 0
+                                    unfollowUsers(u.id).then(data => {
+                                        if (data.resultCode === 0) { // сервер подтвердил что отписка произошла resultCode == 0
                                             props.unfollow(u.id) // вызываем callback unfollow
                                         }
                                     });
@@ -49,13 +45,8 @@ const Users = (props) => {
                                 }}>Unfollow</button>
                                 : <button onClick={ () => {
 
-                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {} , {
-                                        withCredentials: true, // в post запросе 3-м параметром  withCredentials - проверка авторизации
-                                        headers: {
-                                            "API-KEY" : "5351a01e-a2b9-49ab-accf-57bf7595a3cd"
-                                        }
-                                    }).then(response => {
-                                            if (response.data.resultCode === 0) { // сервер подтвердил что подписка произошла resultCode == 0
+                                    followUsers(u.id).then(data => {
+                                            if (data.resultCode === 0) { // сервер подтвердил что подписка произошла resultCode == 0
                                                 props.follow(u.id) // вызываем callback follow
                                             }
                                     });
