@@ -1,8 +1,7 @@
 import React from "react";
 import "./Users.css";
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
-import {followUsers, unfollowUsers} from "../../api/api";
+import {usersAPI} from "../../api/api";
 
 const Users = (props) => {
 
@@ -23,7 +22,6 @@ const Users = (props) => {
                                  onClick={ () => { props.onPageChanged(p) }}> {p} </span>
                 })}
             </div>
-            {/*<button onClick={this.getUsers}>Get Users</button>*/}
             {
                 props.users.map( u => <div className="user-item" key={u.id}>
                     <span className="user-control">
@@ -34,21 +32,23 @@ const Users = (props) => {
                         </div>
                         <div>
                             { u.followed
-                                ? <button onClick={ () => {
-
-                                    unfollowUsers(u.id).then(data => {
+                                ? <button disabled={props.followingInProgress.some( id => id === u.id)} onClick={ () => {
+                                    props.toggleFollowingInProgress(true , u.id)
+                                    usersAPI.unfollowUsers(u.id).then(data => {
                                         if (data.resultCode === 0) { // сервер подтвердил что отписка произошла resultCode == 0
                                             props.unfollow(u.id) // вызываем callback unfollow
                                         }
+                                        props.toggleFollowingInProgress(false, u.id )
                                     });
 
                                 }}>Unfollow</button>
-                                : <button onClick={ () => {
-
-                                    followUsers(u.id).then(data => {
+                                : <button disabled={props.followingInProgress.some( id => id === u.id)} onClick={ () => {
+                                    props.toggleFollowingInProgress(true, u.id)
+                                    usersAPI.followUsers(u.id).then(data => {
                                             if (data.resultCode === 0) { // сервер подтвердил что подписка произошла resultCode == 0
                                                 props.follow(u.id) // вызываем callback follow
                                             }
+                                        props.toggleFollowingInProgress(false , u.id)
                                     });
 
                                 }}>Follow</button>

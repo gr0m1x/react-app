@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProfileInfo.css'
 import Preloader from "../../common/Preloader/Preloader";
+import imgBg from "../../../img/bg.jpg"
 
 
 const ProfileInfo = (props) => {
@@ -11,7 +12,7 @@ const ProfileInfo = (props) => {
     return (
         <div>
             <div >
-                <img src="https://picsum.photos/id/507/1700/400" alt=""/>
+                <img src={imgBg} alt="image"/>
             </div>
 
             <div className="userInfo">

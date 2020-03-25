@@ -1,10 +1,18 @@
 import React from 'react';
-import {follow, setUsers, unfollow,setCurrentPage,setTotalUsersCount,toggleLoader} from '../../redux/users-reducer';
+import {
+    follow,
+    setUsers,
+    unfollow,
+    setCurrentPage,
+    setTotalUsersCount,
+    toggleLoader,
+    toggleFollowingInProgress
+} from '../../redux/users-reducer';
 import {connect} from 'react-redux';
 import * as axios from 'axios';
 import Users from './Users';
 import Preloader from "../common/Preloader/Preloader";
-import {getUsers} from "../../api/api";
+import {usersAPI} from "../../api/api";
 
 class UsersContainerAPI extends React.Component {
 
@@ -15,7 +23,7 @@ class UsersContainerAPI extends React.Component {
     componentDidMount() {
         this.props.toggleLoader(true);
 
-        getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
             this.props.toggleLoader(false);
             this.props.setUsers(data.items);
             this.props.setTotalUsersCount(data.totalCount);
@@ -26,7 +34,7 @@ class UsersContainerAPI extends React.Component {
         this.props.setCurrentPage(pageNumber);
         this.props.toggleLoader(true);
 
-        getUsers(pageNumber, this.props.pageSize).then(data => {
+        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
             this.props.toggleLoader(false);
             this.props.setUsers(data.items)
         });
@@ -44,6 +52,8 @@ class UsersContainerAPI extends React.Component {
                        follow={this.props.follow}
                        unfollow={this.props.unfollow}
                        isLoading={this.props.isLoading}
+                       toggleFollowingInProgress={this.props.toggleFollowingInProgress}
+                       followingInProgress={this.props.followingInProgress}
                 />
             </>
         );
@@ -57,11 +67,12 @@ let mapStateToProps = (state) => {
         totalUserCount: state.usersPage.totalUserCount,
         currentPage: state.usersPage.currentPage,
         isLoading: state.usersPage.isLoading,
+        followingInProgress: state.usersPage.followingInProgress
     }
 };
 
 const UsersContainer = connect(mapStateToProps,
-    {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleLoader}
+    {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleLoader, toggleFollowingInProgress}
 )(UsersContainerAPI);
 
 export default UsersContainer;
