@@ -4,22 +4,20 @@ import {NavLink} from "react-router-dom";
 import {usersAPI} from "../../api/api";
 
 const Users = (props) => {
-
-    let pagesCount = Math.ceil(props.totalUserCount / props.pageSize) ;
+    let pagesCount = Math.ceil(props.totalUserCount / props.pageSize) ; //вычисляем количество страниц
 
     let pages = [];
 
     for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
+        pages.push(i); // набивает масив страницами
     }
 
     return (
         <div>
             <div className="pagination">
-                {/*{console.log(pages)}*/}
                 {pages.map( p => {
                     return <span className={props.currentPage === p ? "selectedPage" : ""}
-                                 onClick={ () => { props.onPageChanged(p) }}> {p} </span>
+                                 onClick={ () => { props.onPageChanged(p) }} key={p}> {p} </span>
                 })}
             </div>
             {
@@ -32,26 +30,12 @@ const Users = (props) => {
                         </div>
                         <div>
                             { u.followed
-                                ? <button disabled={props.followingInProgress.some( id => id === u.id)} onClick={ () => {
-                                    props.toggleFollowingInProgress(true , u.id)
-                                    usersAPI.unfollowUsers(u.id).then(data => {
-                                        if (data.resultCode === 0) { // сервер подтвердил что отписка произошла resultCode == 0
-                                            props.unfollow(u.id) // вызываем callback unfollow
-                                        }
-                                        props.toggleFollowingInProgress(false, u.id )
-                                    });
-
-                                }}>Unfollow</button>
-                                : <button disabled={props.followingInProgress.some( id => id === u.id)} onClick={ () => {
-                                    props.toggleFollowingInProgress(true, u.id)
-                                    usersAPI.followUsers(u.id).then(data => {
-                                            if (data.resultCode === 0) { // сервер подтвердил что подписка произошла resultCode == 0
-                                                props.follow(u.id) // вызываем callback follow
-                                            }
-                                        props.toggleFollowingInProgress(false , u.id)
-                                    });
-
-                                }}>Follow</button>
+                                ? <button disabled={props.followingInProgress.some( id => id === u.id)}
+                                          onClick={ () => {props.unfollow(u.id)}}
+                                    >Unfollow</button>
+                                : <button disabled={props.followingInProgress.some( id => id === u.id)}
+                                          onClick={ () => {props.follow(u.id)}}
+                                    >Follow</button>
                             }
                         </div>
                     </span>

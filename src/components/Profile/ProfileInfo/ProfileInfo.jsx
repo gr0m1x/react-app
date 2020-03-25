@@ -12,13 +12,13 @@ const ProfileInfo = (props) => {
     return (
         <div>
             <div >
-                <img src={imgBg} alt="image"/>
+                <img src={imgBg} alt="bg"/>
             </div>
 
             <div className="userInfo">
                 <div className="userContact">
                     <div>
-                        <img className="userLogo" src={props.profile.photos.small ? props.profile.photos.small : 'https://picsum.photos/id/509/200/200'} alt=""/>
+                        <img className="userLogo" src={props.profile.photos.small ? props.profile.photos.small : 'https://picsum.photos/id/509/200/200'} alt="logo"/>
                         <p>Name: {props.profile.fullName}</p>
                         <p>{props.profile.aboutMe}</p>
                     </div>

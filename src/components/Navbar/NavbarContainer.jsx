@@ -4,9 +4,10 @@ import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
 
 const Navbar = (props) => {
-    let navbarItem = props.navList.map(l => {
+    let navbarItem = props.navList.map((l, i) => {
+
         return (
-            <li className="navList_item">
+            <li className="navList_item" key={i}>
                 <NavLink to={l.rout} activeClassName="active">{l.name}</NavLink>
             </li>
         )
