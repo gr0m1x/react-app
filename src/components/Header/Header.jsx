@@ -12,7 +12,6 @@ const Header = (props) => {
                 alt="site logo"/>
             <div className="loginBlock">
                 {props.isAuth ? <NavLink to={"/profile/" + props.userId}>{props.login}</NavLink> : <NavLink to="/login">Login</NavLink>}
-
             </div>
         </header>
     );

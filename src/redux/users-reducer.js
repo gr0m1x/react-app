@@ -85,7 +85,6 @@ export const toggleFollowingInProgress = (isFollow , userId) => ({type: TOGGLE_F
 
 
 export const getUsers = (currentPage, pageSize) => {
-
     return (dispatch) => {
         dispatch(toggleLoader(true));
 
@@ -99,7 +98,6 @@ export const getUsers = (currentPage, pageSize) => {
 };
 
 export const follow = (userId) => {
-
     return (dispatch) => {
         dispatch(toggleFollowingInProgress(true, userId));
 
@@ -113,9 +111,9 @@ export const follow = (userId) => {
 };
 
 export const unfollow = (userId) => {
-
     return (dispatch) => {
        dispatch(toggleFollowingInProgress(true , userId))
+
         usersAPI.unfollowUsers(userId).then(data => {
             if (data.resultCode === 0) { // сервер подтвердил что отписка произошла resultCode == 0
                 dispatch(unfollowSuccess(userId)); // вызываем callback unfollow
@@ -124,7 +122,5 @@ export const unfollow = (userId) => {
         });
     };
 };
-// export const getUsers
-
 
 export default usersReducer;

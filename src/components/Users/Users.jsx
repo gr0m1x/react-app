@@ -1,7 +1,6 @@
 import React from "react";
 import "./Users.css";
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../api/api";
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUserCount / props.pageSize) ; //вычисляем количество страниц
@@ -9,7 +8,7 @@ const Users = (props) => {
     let pages = [];
 
     for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i); // набивает масив страницами
+        pages.push(i); // набивает масив страниц
     }
 
     return (
