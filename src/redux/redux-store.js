@@ -16,7 +16,7 @@ let reducers = combineReducers({
     auth: authReducer,
 });
 
-let store = createStore(reducers , applyMiddleware(thunkMiddleware)); // создает store из redusers, принимает промежуточный слой applyMiddleware для Thunk
+let store = createStore(reducers , applyMiddleware(thunkMiddleware)); // создает store из reduсers, принимает промежуточный слой applyMiddleware для Thunk
 
 window.store = store;
 

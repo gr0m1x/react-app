@@ -1,3 +1,8 @@
 .userInfo img{
     width: auto;
 }
+
+.userStatus {
+    user-select: none;
+    cursor: pointer;
+}

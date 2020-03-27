@@ -4,7 +4,7 @@ let initialState = {
         {rout:"/dialogs", name:"Messages"},
         {rout:"/news", name:"News"},
         {rout:"/users", name:"Users"},
-        // {rout:"/login", name:"Login"},
+        {rout:"/login", name:"Login"},
         {rout:"/settings", name:"Settings"},
     ]
 }

@@ -17,7 +17,7 @@ const ProfileInfo = (props) => {
             {/*</div>*/}
 
             <div className="userInfo">
-                <ProfileStatus status={"HELLO"} />
+                <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
                 <div className="userContact">
 
                     <div>
