@@ -37,7 +37,7 @@ const Dialogs = (props) => {
                         </textarea>
                     </div>
                     <div>
-                        <button onClick={onSendMessageClick}>Send message</button>
+                        <button onClick={props.dialogsPage.newMessageBody.length ? onSendMessageClick : null}>Send message</button>
                     </div>
                 </div>
             </div>

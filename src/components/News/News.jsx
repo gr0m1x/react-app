@@ -3,16 +3,11 @@ import React from "react";
 
 const News = () => {
 
-    let updateStatus = () => {
-        alert("sss")
-    };
-
     return (
         <div>
             News
-            <button onClick={updateStatus}>sss</button>
         </div>
     );
-}
+};
 
 export default News;
