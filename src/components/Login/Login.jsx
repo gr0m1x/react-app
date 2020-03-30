@@ -1,18 +1,20 @@
 import React from "react";
 import "./Login.css";
 import {Field, reduxForm} from "redux-form";
+import {Input} from "../common/FormsControl/FormsControl";
+import {required} from "../../utils/validators/validators";
 
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={"form-login"} action="">
             <label>
-                <Field type="text" placeholder={"Login"} component={"input"} name={"login"}/>
+                <Field type="text" placeholder="Login" component={Input} name="login" validate={[required]}/>
             </label>
             <label>
-                <Field type="password" placeholder={"Password"} component={"input"} name={"password"}/>
+                <Field type="password" placeholder="Password" component={Input} name="password" validate={[required]}/>
             </label>
             <label>
-                <Field type="checkbox" component={"input"} name={"rememberMe "}/> remember me
+                <Field type="checkbox" component={Input} name="rememberMe" validate={[required]}/> remember me
             </label>
             <div>
                 <button>Login</button>
@@ -26,8 +28,8 @@ const LoginReduxForm = reduxForm({
 })(LoginForm);
 
 const Login = (props) => {
-    const onSubmit = (values) => { // получает данные из формы через hoc handleSubmit
-        console.log(values)
+    const onSubmit = (value) => { // получает данные из формы через hoc handleSubmit
+        console.log(value)
     };
     return (
         <div>
