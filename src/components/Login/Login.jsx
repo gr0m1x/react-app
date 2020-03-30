@@ -3,7 +3,6 @@ import "./Login.css";
 import {Field, reduxForm} from "redux-form";
 
 const LoginForm = (props) => {
-// debugger
     return (
         <form onSubmit={props.handleSubmit} className={"form-login"} action="">
             <label>
@@ -27,8 +26,8 @@ const LoginReduxForm = reduxForm({
 })(LoginForm);
 
 const Login = (props) => {
-    const onSubmit = (formData) => { // получает данные из формы через hoc handleSubmit
-        console.log(formData)
+    const onSubmit = (values) => { // получает данные из формы через hoc handleSubmit
+        console.log(values)
     };
     return (
         <div>
