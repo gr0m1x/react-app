@@ -50,7 +50,7 @@ let mapStateToProps = (state) => {
     }
 };
 
-export default compose(
+export default compose( // compose выполняет по очереди функции, с низу в верх
     connect(mapStateToProps, {follow, unfollow, getUsers}),
-    withAuthRedirect
+    withAuthRedirect // hoc withAuthRedirect. если не залогинен , ридеректид на страницу Логин
 )(UsersContainer);
