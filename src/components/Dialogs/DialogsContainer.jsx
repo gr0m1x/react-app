@@ -19,5 +19,5 @@ let mapDispatchToProps = (dispatch) => {
 
 export default compose(
     connect(mapStateToProps,mapDispatchToProps),
-    withAuthRedirect // hoc проверка авторизации
+    withAuthRedirect // hoc withAuthRedirect. если не залогинен , ридеректид на страницу Логин
 )(Dialogs);

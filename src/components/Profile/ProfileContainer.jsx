@@ -11,7 +11,6 @@ class ProfileContainer extends React.Component {
     componentDidMount() {
 
         let userId = this.props.match.params.userId; // взятие Id User при нажатии на Icon в Users Page
-        console.log(this.props.authorizedUserId);
         if (!userId) {
             userId = this.props.authorizedUserId
         }
