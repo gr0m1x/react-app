@@ -1,4 +1,5 @@
 import {authAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = "SET-USER-DATA";
 
@@ -40,9 +41,13 @@ export const getAuthUserData = () => {
 
 export const login = (email, password, rememberMe) => {
     return (dispatch) => {
+
         authAPI.login(email, password, rememberMe).then(data => {
             if(data.resultCode === 0) {
                 dispatch(getAuthUserData()); // после Логина вызывает getAuthUserData(), что бы перерисовать компонетну
+            } else  {
+                let errorMessage = data.messages.length > 0 ? data.messages[0] : "Some error";
+                dispatch(stopSubmit("login", {_error : errorMessage})); // actionCreator от redux form. для формы "login"
             }
         });
     }

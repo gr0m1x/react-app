@@ -25,6 +25,7 @@ const LoginForm = (props) => {
                        component={Input}
                        validate={[required]}/> remember me
             </label>
+            {props.error && <div className="error">{props.error}</div>}
             <div>
                 <button>Login</button>
             </div>

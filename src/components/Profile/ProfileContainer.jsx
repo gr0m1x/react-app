@@ -9,9 +9,11 @@ import {compose} from "redux";
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
+
         let userId = this.props.match.params.userId; // взятие Id User при нажатии на Icon в Users Page
+        console.log(this.props.authorizedUserId);
         if (!userId) {
-            userId = 6657
+            userId = this.props.authorizedUserId
         }
         this.props.getUserProfile(userId); // вывод информации о User в Profile
         this.props.getUserStatus(userId)
@@ -27,6 +29,8 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
+    authorizedUserId: state.auth.userId,
+    isAuth: state.auth.isAuth,
 });
 
 export default compose(
