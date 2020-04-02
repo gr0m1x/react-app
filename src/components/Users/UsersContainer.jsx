@@ -15,7 +15,6 @@ import {
 // import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 class UsersContainer extends React.Component {
-
     // constructor(props) {
     //     super(props);
     // }
@@ -31,6 +30,7 @@ class UsersContainer extends React.Component {
     render() {
         return  (
             <>
+                {console.log("RENDER")}
                 { this.props.isLoading ? <Preloader/> : null }
                 <Users totalUserCount={this.props.totalUserCount}
                        pageSize={this.props.pageSize}
@@ -47,17 +47,8 @@ class UsersContainer extends React.Component {
     };
 }
 
-// let mapStateToProps = (state) => {
-//     return{
-//         users: state.usersPage.users,
-//         pageSize: state.usersPage.pageSize,
-//         totalUserCount: state.usersPage.totalUserCount,
-//         currentPage: state.usersPage.currentPage,
-//         isLoading: state.usersPage.isLoading,
-//         followingInProgress: state.usersPage.followingInProgress
-//     }
-// };
 let mapStateToProps = (state) => {
+    console.log("Users map state")
     return{
         users: getUsers(state),
         pageSize: getPageSize(state),

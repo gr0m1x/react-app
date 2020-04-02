@@ -16,7 +16,6 @@ let initialState = {
     isLoading: false,
     followingInProgress: [],
     // isfollowingInProgress: false,
-
 }
 
 const usersReducer = (state = initialState, action) => {
