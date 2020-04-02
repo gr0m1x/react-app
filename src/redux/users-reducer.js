@@ -84,15 +84,15 @@ export const toggleLoader = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading}
 export const toggleFollowingInProgress = (isFollow , userId) => ({type: TOGGLE_FOLLOWING_PROGRESS, isFollow , userId});
 
 
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (requestPage, pageSize) => {
     return (dispatch) => {
         dispatch(toggleLoader(true));
 
-        usersAPI.getUsers(currentPage, pageSize).then(data => { // получаем Users после создания компаненты
+        usersAPI.requestUsers(requestPage, pageSize).then(data => { // получаем Users после создания компаненты
             dispatch(toggleLoader(false));
             dispatch(setUsers(data.items));
             dispatch(setTotalUsersCount(data.totalCount));
-            dispatch(setCurrentPage(currentPage));
+            dispatch(setCurrentPage(requestPage));
         });
     };
 };
