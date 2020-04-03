@@ -2,7 +2,7 @@ import React from 'react';
 import './ProfileInfo.css'
 import Preloader from "../../common/Preloader/Preloader";
 // import imgBg from "../../../img/bg.jpg"
-import ProfileStatus from "./ProfileStatus"
+// import ProfileStatus from "./ProfileStatus"
 import ProfileStatusWithHooks from "./ProfileStatusWhithHooks";
 
 

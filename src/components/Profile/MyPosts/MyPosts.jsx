@@ -1,7 +1,7 @@
 import React from 'react';
 import './MyPosts.css';
 import Post from "./Post/Post";
-import {reduxForm ,Field} from "redux-form";
+import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import {Textarea} from "../../common/FormsControl/FormsControl";
 
@@ -26,8 +26,9 @@ const AddPostFormRedux = reduxForm({
 })(AddNewPostForm);
 
 
-const MyPosts = (props) => {
-    let postsElemetns = props.posts.map( (p, i) => <Post message={p.postText} likeCount={p.likesCount} key={i}/>);
+function MyPosts(props) {
+    let postsElements = props.posts.map((p, i) =>
+        <Post message={p.postText} likeCount={p.likesCount} key={i}/>);
 
     let addNewPost = (values) => {
         props.addPost(values.newPostText)
@@ -40,7 +41,7 @@ const MyPosts = (props) => {
             <AddPostFormRedux onSubmit={addNewPost}/>
 
             <div className="postsList">
-                {postsElemetns}
+                {postsElements}
             </div>
         </div>
     );
