@@ -1,8 +1,9 @@
 import {profileAPI} from "../api/api";
 
-const ADD_POST = "ADD-POST";
-const SET_USER_PROFILE = "SET-USER-PROFILE";
-const SET_STATUS = "SET-STATUS";
+// Actions
+const ADD_POST = "my-network/profile/ADD-POST";
+const SET_USER_PROFILE = "my-network/profile/SET-USER-PROFILE";
+const SET_STATUS = "my-network/profile/SET-STATUS";
 
 let initialState = {
     posts: [
@@ -15,6 +16,7 @@ let initialState = {
     status: '',
 };
 
+// Reducer
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
@@ -45,33 +47,30 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
+// Action Creators
 export const addPostCreator = (newPostText) => ({type: ADD_POST, newPostText});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const setStatus = (status) => ({type: SET_STATUS, status});
 
-export const getUserProfile = (userId) => {
-    return (dispatch) => {
-        profileAPI.getProfile(userId).then(data => {
-                dispatch(setUserProfile(data));
-            });
-    }
+// side effects, only as applicable
+// e.g. thunks, epics, etc
+export const getUserProfile = (userId) => async (dispatch) => {
+    let data = await profileAPI.getProfile(userId);
+    dispatch(setUserProfile(data));
 };
-export const getUserStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getStatus(userId).then(response => {
-            dispatch(setStatus(response.data));
-        });
+
+export const getUserStatus = (userId) => async (dispatch) => {
+    let response = await profileAPI.getStatus(userId);
+    dispatch(setStatus(response.data));
+};
+
+export const updateUserStatus = (status) => async (dispatch) => {
+    let response = await profileAPI.updateStatus(status);
+
+    if(response.data.resultCode === 0) {
+        dispatch(setStatus(status));
     }
 };
 
-export const updateUserStatus = (status) => {
-    return (dispatch) => {
-        profileAPI.updateStatus(status).then(response => {
-            if(response.data.resultCode === 0) {
-                dispatch(setStatus(status));
-            }
-        });
-    }
-};
 
 export default profileReducer;

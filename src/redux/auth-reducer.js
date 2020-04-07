@@ -24,44 +24,38 @@ const authReducer = (state = initialState, action) => {
         default:
             return state;
     }
-}
+};
 
 export const setAuthUserData = (userId, email, login, isAuth) => ({type: SET_USER_DATA, payload: {userId, email, login, isAuth}});
 
-export const getAuthUserData = () => {
-    return (dispatch) => {
-        return authAPI.authMe().then(data => {
-                if(data.resultCode === 0) {
-                    let {id, email, login} = data.data;
-                    dispatch(setAuthUserData(id, email, login, true));
-                }
-            });
+export const getAuthUserData = () => async (dispatch) => {
+    let data = await authAPI.authMe();
+
+    if(data.resultCode === 0) {
+        let {id, email, login} = data.data;
+        dispatch(setAuthUserData(id, email, login, true));
     }
 };
 
-export const login = (email, password, rememberMe) => {
-    return (dispatch) => {
+export const login = (email, password, rememberMe) => async (dispatch) => {
+    let data = await authAPI.login(email, password, rememberMe);
 
-        authAPI.login(email, password, rememberMe).then(data => {
-            if(data.resultCode === 0) {
-                dispatch(getAuthUserData()); // после Логина вызывает getAuthUserData(), что бы перерисовать компонетну
-            } else  {
-                let errorMessage = data.messages.length > 0 ? data.messages[0] : "Some error";
-                dispatch(stopSubmit("login", {_error : errorMessage})); // actionCreator от redux form. для формы "login"
-            }
-        });
+    if(data.resultCode === 0) {
+        dispatch(getAuthUserData()); // после Логина вызывает getAuthUserData(), что бы перерисовать компонетну
+    } else  {
+        let errorMessage = data.messages.length > 0 ? data.messages[0] : "Some error";
+        dispatch(stopSubmit("login", {_error : errorMessage})); // actionCreator stopSubmit от redux form. для формы "login"
     }
+
 };
 
-export const logout = () => {
-    return (dispatch) => {
-        authAPI.logout().then(data => {
-            if(data.resultCode === 0) {
-                dispatch(setAuthUserData(null, null, null, false)); // при LogOut зануляем даные о себе
-            }
-        });
+export const logout = () => async (dispatch) => {
+   let data = await authAPI.logout();
+
+    if(data.resultCode === 0) {
+        // при LogOut зануляем даные о себе
+        dispatch(setAuthUserData(null, null, null, false));
     }
 };
-
 
 export default authReducer;

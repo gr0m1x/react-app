@@ -27,7 +27,7 @@ const AddPostFormRedux = reduxForm({
 
 
 function MyPosts(props) {
-    let postsElements = props.posts.map((p, i) =>
+    let postsElements = [...props.posts].reverse().map((p, i) =>
         <Post message={p.postText} likeCount={p.likesCount} key={i}/>);
 
     let addNewPost = (values) => {

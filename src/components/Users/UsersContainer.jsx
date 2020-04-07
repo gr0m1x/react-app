@@ -20,17 +20,18 @@ class UsersContainer extends React.Component {
     // }
 
     componentDidMount() {
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize);
+        const {currentPage, pageSize} = this.props; // диструктуризация
+        this.props.requestUsers(currentPage, pageSize);
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.requestUsers(pageNumber, this.props.pageSize);
+        const {pageSize} = this.props;
+        this.props.requestUsers(pageNumber, pageSize);
     };
 
     render() {
         return  (
             <>
-                {console.log("RENDER")}
                 { this.props.isLoading ? <Preloader/> : null }
                 <Users totalUserCount={this.props.totalUserCount}
                        pageSize={this.props.pageSize}
@@ -48,7 +49,6 @@ class UsersContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-    console.log("Users map state")
     return{
         users: getUsers(state),
         pageSize: getPageSize(state),

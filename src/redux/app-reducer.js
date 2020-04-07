@@ -26,7 +26,7 @@ export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
 
 export const initializeApp = () => {
     return (dispatch) => {
-        let promise = dispatch(getAuthUserData()); // возвразаем промисы
+        let promise = dispatch(getAuthUserData()); //диспатчик Thunk, возвращает промисы.
         Promise.all([promise]).then( () => {  // вызываем инициализацию после того как получим getAuthUserData - данные о пользователе
                 dispatch(initializedSuccess())
         });

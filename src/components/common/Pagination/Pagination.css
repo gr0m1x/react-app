@@ -1,0 +1,16 @@
+.pagination {
+    margin-bottom: 20px;
+}
+.pagination span{
+    display: inline-block;
+    margin: 0 5px;
+
+    cursor: pointer;
+}
+.pagination span:hover {
+    color: #09d3ac;
+}
+
+.selectedPage {
+    font-weight: 700;
+}
