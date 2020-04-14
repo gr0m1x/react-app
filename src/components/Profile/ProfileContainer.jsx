@@ -5,11 +5,11 @@ import {getUserProfile, getUserStatus, updateUserStatus} from "../../redux/profi
 import {withRouter} from "react-router-dom";
 // import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import Login from "../Login/Login";
 
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-
         let userId = this.props.match.params.userId; // взятие Id User при нажатии на Icon в Users Page
         if (!userId) {
             userId = this.props.authorizedUserId

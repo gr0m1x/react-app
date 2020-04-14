@@ -1,13 +1,14 @@
 .pagination {
     margin-bottom: 20px;
 }
-.pagination span{
+.pagination_item {
     display: inline-block;
     margin: 0 5px;
 
     cursor: pointer;
+    user-select: none;
 }
-.pagination span:hover {
+.pagination_item:hover {
     color: #09d3ac;
 }
 
