@@ -3,26 +3,38 @@ import './ProfileInfo.css'
 import Preloader from "../../common/Preloader/Preloader";
 // import ProfileStatus from "./ProfileStatus"
 import ProfileStatusWithHooks from "./ProfileStatusWhithHooks";
+import userPhoto from "../../../img/avatar.jpg"
 
 
-const ProfileInfo = ({profile, status, updateUserStatus, ...props}) => {
+const ProfileInfo = ({profile, status, updateUserStatus, isOwner, savePhoto, ...props}) => {
     if (!profile) {
         return <Preloader />
     }
+
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            savePhoto(e.target.files[0])
+        }
+    };
 
     return (
         <div>
             <div className="userInfo">
                 <ProfileStatusWithHooks status={status} updateUserStatus={updateUserStatus}/>
+
                 <div className="userContact">
                     <div>
-                        <img className="userLogo"  alt="logo" src={profile.photos.small
-                            ? profile.photos.small
-                            : 'https://picsum.photos/id/509/200/200'} />
+                        <img className="profile__user-photo"  alt="logo"
+                             src={profile.photos.small
+                                    ? profile.photos.small
+                                    : userPhoto}
+                        />
+
+                        {isOwner && <input type="file" onChange={onMainPhotoSelected}/>}
+
                         <p>Name: {profile.fullName}</p>
                         <p>{profile.aboutMe}</p>
                     </div>
-
                     {/*сделать что бы MAPилось*/}
                     <ul className="userContact-list">
                         <li>{profile.contacts.facebook}</li>

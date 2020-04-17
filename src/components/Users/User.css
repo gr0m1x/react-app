@@ -2,15 +2,22 @@
     display: flex;
     margin-bottom: 20px;
 }
-.user-icon_wrap {
+.user-photo_wrap {
+    margin-bottom: 20px;
     width: 70px;
     height: 70px;
-    margin-bottom: 20px;
 
     border-radius: 50%;
     overflow: hidden;
 }
+
+.user-photo {
+    height: 100%;
+    object-fit: cover;
+}
+
 .user-control {
+    display: block;
     width: 10%;
 }
 .user-info {

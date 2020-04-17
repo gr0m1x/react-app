@@ -1,14 +1,15 @@
 import React from "react";
 import "./User.css";
 import {NavLink} from "react-router-dom";
+import userPhoto from "../../img/avatar.jpg"
 
 const User = ({user, followingInProgress, unfollow, follow}) => {
     return (
         <div className="user-item">
             <span className="user-control">
-                <div className="user-icon_wrap">
-                    <NavLink to={'/profile/' + user.id}>
-                        <img src={user.photos.small != null ? user.photos.small : "https://picsum.photos/60/60"}
+                <div className="user-photo_wrap">
+                    <NavLink className={"user-photo__link"} to={'/profile/' + user.id}>
+                        <img className={"user-photo"} src={user.photos.small != null ? user.photos.small : userPhoto}
                              alt={user.photos.small}/>
                     </NavLink>
                 </div>

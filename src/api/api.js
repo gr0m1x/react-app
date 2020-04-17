@@ -35,6 +35,16 @@ export const profileAPI = {
 
     updateStatus(status) {
         return instance.put(`profile/status`, {status : status})
+    },
+
+    savePhoto(photoFile) {
+        const formData = new FormData(); // формируем обьект  что бы отправить фото на сервак
+        formData.append("image", photoFile); // в обьект передаем требуемый параметр и файл для заггрузки
+        return instance.put(`profile/photo`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data' // 2м параметром передаем объект formData, 3-м настраиваем заголовки 'Content-Type': 'multipart/form-data'
+            }
+        })
     }
 };
 
