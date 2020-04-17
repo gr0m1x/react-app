@@ -1,4 +1,4 @@
-import React ,{Suspense} from 'react';
+import React from 'react';
 import './App.css';
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
