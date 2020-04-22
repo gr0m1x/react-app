@@ -33,7 +33,7 @@ const ProfileInfo = ({profile, status, updateUserStatus, isOwner, savePhoto, sav
     return (
         <div>
             <div className="userInfo">
-                <ProfileStatusWithHooks status={status} updateUserStatus={updateUserStatus}/>
+                <ProfileStatusWithHooks isOwner={isOwner} status={status} updateUserStatus={updateUserStatus}/>
 
                 <div className="userContact">
                     <img className="profile__user-photo"  alt="logo"
@@ -42,7 +42,11 @@ const ProfileInfo = ({profile, status, updateUserStatus, isOwner, savePhoto, sav
                                 : userPhoto}
                     />
 
-                    {isOwner && <input type="file" onChange={onMainPhotoSelected}/>}
+                    {isOwner &&
+                        <label className="select-user-photo__label">
+                            <input className="select-user-photo" type="file" onChange={onMainPhotoSelected}/>
+                            Select photo
+                        </label>}
                 </div>
             </div>
 
