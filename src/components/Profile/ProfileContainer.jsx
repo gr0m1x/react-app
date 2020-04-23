@@ -36,7 +36,7 @@ class ProfileContainer extends React.Component {
         return (
             <Profile
                 {...this.props}
-                isOwner={!this.props.match.params.userId} // если id undefined . двойное отрицание = true. значит страница пользователя владельца
+                isOwner={!this.props.match.params.userId} // если id undefined(номер ID приходе только пр переходу с user page) = отрицание = true. значит страница пользователя владельца
                 profile={this.props.profile}
                 status={this.props.status}
                 updateUserStatus={this.props.updateUserStatus}
